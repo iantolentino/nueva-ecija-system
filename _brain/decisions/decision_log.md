@@ -6,3 +6,8 @@
 Impact: medium
 Reason: Build and preview the complete application locally before connecting live services.
 Date: 2026-07-25
+
+[ARCH] -> Use `vercel.json` rewrites for friendly local page URLs while retaining `/api` Node handlers
+Impact: medium
+Reason: `/login`, `/dashboard`, `/directory`, and citizen pages must be locally testable without changing the serverless route structure.
+Date: 2026-07-25

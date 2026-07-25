@@ -1,0 +1,10 @@
+{
+  "framework": null,
+  "rewrites": [
+    { "source": "/login", "destination": "/api/login" },
+    { "source": "/logout", "destination": "/api/logout" },
+    { "source": "/dashboard", "destination": "/api/dashboard" },
+    { "source": "/directory", "destination": "/api/directory" },
+    { "source": "/citizen/:id", "destination": "/api/citizen/:id" }
+  ]
+}
