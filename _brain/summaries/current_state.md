@@ -7,16 +7,17 @@ EXECUTION_MODE
 MVP
 
 ## Last Completed Task
-None
+T002 — Build Part 2 layout and data access
+Completed: 2026-07-25
 
 ## Next Task
-T001 — Build Part 1 foundation
-Depends on: none
+T003 — Build Part 3 auth, dashboard, and directory
+Depends on: T002
 
 ## Active Blockers
-T001 cannot complete Neon schema application and database integration verification until `DATABASE_URL` is configured.
+None
 
 ## Session Notes
-The workflow is derived solely from `_brain/parts/PART-1-of-5-nodejs-foundation.md` through `PART-5-of-5-remaining-modules-deploy.md`. T001 dependencies are installed, password/session helpers and database configuration guard pass runtime checks, and `package-lock.json` is present. Neon schema application awaits `DATABASE_URL`.
+Live Neon/Vercel work remains deferred to the final release task. T002 local checks passed: syntax/import checks plus escaped-layout and model-export verification.
 
 Last updated: 2026-07-25
