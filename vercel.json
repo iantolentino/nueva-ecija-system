@@ -5,6 +5,13 @@
     { "source": "/logout", "destination": "/api/logout" },
     { "source": "/dashboard", "destination": "/api/dashboard" },
     { "source": "/directory", "destination": "/api/directory" },
-    { "source": "/citizen/:id", "destination": "/api/citizen/:id" }
+    { "source": "/citizen/new", "destination": "/api/citizen/new" },
+    { "source": "/citizen/:id/edit", "destination": "/api/citizen/:id/edit" },
+    { "source": "/citizen/:id", "destination": "/api/citizen/:id" },
+    { "source": "/directory/import", "destination": "/api/directory/import" },
+    { "source": "/announcements", "destination": "/api/announcements" },
+    { "source": "/scholarships", "destination": "/api/scholarships" },
+    { "source": "/scholarships/apply", "destination": "/api/scholarships/apply" },
+    { "source": "/scholarships/:id/review", "destination": "/api/scholarships/:id/review" }
   ]
 }

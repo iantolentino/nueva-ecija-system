@@ -13,6 +13,7 @@ None
 | T001 | Build Part 1 foundation | 2026-07-25 |
 | T002 | Build Part 2 layout and data access | 2026-07-25 |
 | T003 | Build Part 3 auth, dashboard, and directory | 2026-07-25 |
+| T004 | Build Part 4 citizen workflows, announcements, and scholarships | 2026-07-25 |
 
 ## Blocked
 | ID | Task | Reason |
