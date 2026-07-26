@@ -23,7 +23,7 @@ Status: `FIXED` | `WORKAROUND` (not a real fix, revisit) | `SUPERSEDED` (see lin
 
 | ID | Title | Category | Root Cause (1 line) | Detail File | Date | Status |
 |----|-------|----------|----------------------|-------------|------|--------|
-| | | | | | | |
+| F001 | Local preview crashes after login | INFRA | Local environment lacked `DATABASE_URL`, so DB-backed Vercel functions crashed instead of serving the app. | inline | 2026-07-27 | WORKAROUND |
 
 ---
 

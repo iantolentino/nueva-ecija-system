@@ -11,3 +11,8 @@ Date: 2026-07-25
 Impact: medium
 Reason: `/login`, `/dashboard`, `/directory`, and citizen pages must be locally testable without changing the serverless route structure.
 Date: 2026-07-25
+
+[INFRA] -> Add a local env guard before starting Vercel dev
+Impact: medium
+Reason: Missing `DATABASE_URL` should stop local preview with a clear message instead of a serverless function crash.
+Date: 2026-07-27

@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "preview": "vercel dev",
+    "dev": "node scripts/check-local-env.js && vercel dev --listen 3000",
+    "preview": "npm run dev",
+    "check:local": "node scripts/check-local-env.js",
     "start": "node server.js"
   },
   "dependencies": {

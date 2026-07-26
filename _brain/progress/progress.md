@@ -1,11 +1,12 @@
 # PROGRESS
 
 ## Active Task
-None
+Local preview enablement
 
 ## In Progress
 | ID | Task | Blocker |
 |---|---|---|
+| B001 | Enable full local preview after login | `.env.local` still needs a real `DATABASE_URL` value; Vercel development env pull only provided `VERCEL_OIDC_TOKEN`. |
 
 ## Completed
 | ID | Task | Date Completed |
