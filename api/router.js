@@ -20,6 +20,11 @@ import publicHearings from '../routes/public-hearings.js';
 import publicAnnouncements from '../routes/public-announcements.js';
 import publicEvents from '../routes/public-events.js';
 import publicHearingsView from '../routes/public-hearings-view.js';
+import publicScholarships from '../routes/public-scholarships.js';
+import publicClearanceRequest from '../routes/public-clearance-request.js';
+import publicJobs from '../routes/public-jobs.js';
+import publicRecordCheck from '../routes/public-record-check.js';
+import publicHouseholdCheck from '../routes/public-household-check.js';
 import qrPass from '../routes/qr-pass/[citizenId].js';
 import qrPasses from '../routes/qr-passes.js';
 import reliefDistribution from '../routes/relief-distribution.js';
@@ -37,6 +42,11 @@ const routes = [
   { pattern: /^\/public\/announcements\/?$/, handler: publicAnnouncements },
   { pattern: /^\/public\/events\/?$/, handler: publicEvents },
   { pattern: /^\/public\/hearings\/?$/, handler: publicHearingsView },
+  { pattern: /^\/public\/scholarships\/?$/, handler: publicScholarships },
+  { pattern: /^\/public\/clearance-request\/?$/, handler: publicClearanceRequest },
+  { pattern: /^\/public\/jobs\/?$/, handler: publicJobs },
+  { pattern: /^\/public\/record-check\/?$/, handler: publicRecordCheck },
+  { pattern: /^\/public\/household-check\/?$/, handler: publicHouseholdCheck },
   { pattern: /^\/login\/?$/, handler: login },
   { pattern: /^\/api\/login\/?$/, handler: login },
   { pattern: /^\/logout\/?$/, handler: logout },

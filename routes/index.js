@@ -24,6 +24,7 @@ export default async function handler(req, res) {
           <li>Community service announcements</li>
           <li>Read-only public events calendar</li>
           <li>Upcoming public hearings and pending public comments</li>
+          <li>Public applications and privacy-safe record checks</li>
         </ul>
       </div>
     </div>
@@ -33,6 +34,11 @@ export default async function handler(req, res) {
       <a class="module-card tone-services" href="/public/announcements"><span class="module-icon">AN</span><span><strong>Announcements</strong><small>Community notices and service updates</small></span></a>
       <a class="module-card tone-services" href="/public/events"><span class="module-icon">EV</span><span><strong>Events Calendar</strong><small>Public activities and schedules</small></span></a>
       <a class="module-card tone-services" href="/public/hearings"><span class="module-icon">PH</span><span><strong>Public Hearings</strong><small>Upcoming hearings and citizen comments</small></span></a>
+      <a class="module-card tone-services" href="/public/scholarships"><span class="module-icon">SC</span><span><strong>Scholarships</strong><small>Apply for staff-reviewed programs</small></span></a>
+      <a class="module-card tone-services" href="/public/clearance-request"><span class="module-icon">CL</span><span><strong>Clearance Request</strong><small>Submit a barangay clearance request</small></span></a>
+      <a class="module-card tone-employment" href="/public/jobs"><span class="module-icon">JO</span><span><strong>Job Opportunities</strong><small>View postings and apply</small></span></a>
+      <a class="module-card tone-records" href="/public/record-check"><span class="module-icon">ID</span><span><strong>Citizen Record Check</strong><small>Privacy-safe record existence check</small></span></a>
+      <a class="module-card tone-records" href="/public/household-check"><span class="module-icon">HM</span><span><strong>Household Check</strong><small>Check or request correction review</small></span></a>
     </div>
   </section>`;
 

@@ -21,6 +21,8 @@ None
 | UX002 | Fix sidebar SPA navigation, add Staff Administration, functional Events Calendar, and QA seed data | 2026-07-27 |
 | B003 | Fix duplicate sidebar active highlights and seed every module tab | 2026-07-27 |
 | PUB001 | Phase 1 public infrastructure: layout, announcements, events, hearings/comments | 2026-07-27 |
+| PUB002 | Phase 2 public application/request flows with admin review queues | 2026-07-27 |
+| PUB003 | Phase 3 privacy-safe citizen and household record checkers | 2026-07-27 |
 
 ## Blocked
 | ID | Task | Reason |

@@ -148,6 +148,26 @@ CREATE TABLE IF NOT EXISTS scholarship_applications (
   submitted_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS public_scholarship_applications (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  scholarship_program_id UUID REFERENCES scholarship_programs(id) ON DELETE SET NULL,
+  matched_citizen_id UUID REFERENCES citizens(id) ON DELETE SET NULL,
+  applicant_first_name TEXT NOT NULL,
+  applicant_last_name TEXT NOT NULL,
+  applicant_middle_name TEXT,
+  birth_date DATE,
+  barangay_id UUID REFERENCES barangays(id) ON DELETE SET NULL,
+  contact_number TEXT,
+  email TEXT,
+  school_name TEXT,
+  course_or_strand TEXT,
+  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected', 'needs_verification')),
+  review_notes TEXT,
+  reviewed_by_staff_id UUID REFERENCES staff_accounts(id) ON DELETE SET NULL,
+  reviewed_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS mtop_permits (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   citizen_id UUID NOT NULL REFERENCES citizens(id),
@@ -185,6 +205,21 @@ CREATE TABLE IF NOT EXISTS job_matches (
   status TEXT NOT NULL DEFAULT 'Suggested',
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   UNIQUE (citizen_id, job_opportunity_id)
+);
+
+CREATE TABLE IF NOT EXISTS job_applications (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  job_opportunity_id UUID REFERENCES job_opportunities(id) ON DELETE SET NULL,
+  matched_citizen_id UUID REFERENCES citizens(id) ON DELETE SET NULL,
+  applicant_name TEXT NOT NULL,
+  contact_number TEXT,
+  email TEXT,
+  skills_summary TEXT,
+  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'reviewed', 'shortlisted', 'rejected')),
+  review_notes TEXT,
+  reviewed_by_staff_id UUID REFERENCES staff_accounts(id) ON DELETE SET NULL,
+  reviewed_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS qr_passes (
@@ -274,6 +309,44 @@ CREATE TABLE IF NOT EXISTS clearances_issued (
   rendered_content TEXT NOT NULL,
   issued_by_staff_id UUID REFERENCES staff_accounts(id) ON DELETE SET NULL,
   issued_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS clearance_requests (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  matched_citizen_id UUID REFERENCES citizens(id) ON DELETE SET NULL,
+  requester_name TEXT NOT NULL,
+  birth_date DATE,
+  barangay_id UUID REFERENCES barangays(id) ON DELETE SET NULL,
+  contact_number TEXT,
+  email TEXT,
+  purpose TEXT,
+  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'processing', 'approved', 'rejected', 'issued')),
+  review_notes TEXT,
+  reviewed_by_staff_id UUID REFERENCES staff_accounts(id) ON DELETE SET NULL,
+  reviewed_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS citizen_record_check_requests (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  birth_date DATE,
+  barangay_id UUID REFERENCES barangays(id) ON DELETE SET NULL,
+  result TEXT NOT NULL CHECK (result IN ('found', 'not_found', 'needs_verification')),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS household_check_requests (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  requester_name TEXT NOT NULL,
+  birth_date DATE,
+  barangay_id UUID REFERENCES barangays(id) ON DELETE SET NULL,
+  address_line TEXT,
+  correction_details TEXT,
+  result TEXT NOT NULL CHECK (result IN ('found', 'not_found', 'needs_verification')),
+  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'reviewed', 'resolved')),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS relief_distributions (

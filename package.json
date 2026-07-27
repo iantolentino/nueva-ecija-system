@@ -9,6 +9,7 @@
     "check:local": "node scripts/check-local-env.js",
     "seed:demo": "node scripts/seed-demo-data.js",
     "seed:demo:reset": "node scripts/seed-demo-data.js --reset",
+    "db:public-queues": "node scripts/apply-public-queues.js",
     "start": "node server.js"
   },
   "dependencies": {

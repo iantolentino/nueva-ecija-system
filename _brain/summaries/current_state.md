@@ -34,6 +34,8 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 stricter sidebar active fix: removed broad client/server active toggling, changed nested route checks to exact route-segment regex, and made the client clear all `.active` classes before applying only the first exact `data-nav-key` match. Verified five-path client sequence: `/directory`, `/households`, `/qr-passes`, `/events`, `/staff-admin` each produced exactly one active item.
 
-2026-07-27 public/admin split Phase 1: root `/` is now a public citizen services home page, public no-login routes added for `/public/announcements`, `/public/events`, and `/public/hearings`. Public hearings accept unauthenticated comments with `is_verified=false`; admin `/public-hearings` now shows a public comment review queue. Phase 2 and Phase 3 remain unstarted.
+2026-07-27 public/admin split Phase 1: root `/` is now a public citizen services home page, public no-login routes added for `/public/announcements`, `/public/events`, and `/public/hearings`. Public hearings accept unauthenticated comments with `is_verified=false`; admin `/public-hearings` now shows a public comment review queue.
+
+2026-07-27 public/admin split Phases 2-3: added public no-login flows for `/public/scholarships`, `/public/clearance-request`, `/public/jobs`, `/public/record-check`, and `/public/household-check`. Added queue tables for public scholarship applications, clearance requests, job applications, citizen record checks, and household check/correction requests. Admin queues render in `/scholarships`, `/clearances`, `/job-opportunities`, `/directory`, and `/households`. MTOP, QR Passes, and Job Matches remain held pending user confirmation.
 
 Last updated: 2026-07-27
