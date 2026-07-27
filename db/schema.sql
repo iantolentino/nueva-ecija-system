@@ -230,16 +230,6 @@ CREATE TABLE IF NOT EXISTS qr_passes (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE TABLE IF NOT EXISTS vital_events (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  citizen_id UUID NOT NULL REFERENCES citizens(id),
-  event_type TEXT NOT NULL CHECK (event_type IN ('Birth', 'Death', 'Address Change')),
-  event_date DATE NOT NULL,
-  details JSONB NOT NULL DEFAULT '{}'::jsonb,
-  recorded_by_staff_id UUID REFERENCES staff_accounts(id) ON DELETE SET NULL,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
 CREATE TABLE IF NOT EXISTS blood_donors (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   citizen_id UUID NOT NULL UNIQUE REFERENCES citizens(id) ON DELETE CASCADE,

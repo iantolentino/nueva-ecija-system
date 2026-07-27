@@ -34,7 +34,6 @@ import scholarshipApply from '../routes/scholarships/apply.js';
 import scholarshipReview from '../routes/scholarships/[id]/review.js';
 import skillsProfiles from '../routes/skills-profiles.js';
 import staffAdmin from '../routes/staff-admin.js';
-import vitalEvents from '../routes/vital-events.js';
 
 const routes = [
   { pattern: /^\/$/, handler: index },
@@ -62,7 +61,6 @@ const routes = [
   { pattern: /^\/mtop\/?$/, handler: mtop },
   { pattern: /^\/qr-pass\/([^/]+)\/?$/, handler: qrPass, params: ['citizenId'] },
   { pattern: /^\/qr-passes\/?$/, handler: qrPasses },
-  { pattern: /^\/vital-events\/?$/, handler: vitalEvents },
   { pattern: /^\/blood-donors\/?$/, handler: bloodDonors },
   { pattern: /^\/public-hearings\/?$/, handler: publicHearings },
   { pattern: /^\/emergency-contacts\/?$/, handler: emergencyContacts },

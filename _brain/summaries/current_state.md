@@ -38,4 +38,6 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 public/admin split Phases 2-3: added public no-login flows for `/public/scholarships`, `/public/clearance-request`, `/public/jobs`, `/public/record-check`, and `/public/household-check`. Added queue tables for public scholarship applications, clearance requests, job applications, citizen record checks, and household check/correction requests. Admin queues render in `/scholarships`, `/clearances`, `/job-opportunities`, `/directory`, and `/households`. MTOP, QR Passes, and Job Matches remain held pending user confirmation.
 
+2026-07-27 Vital Events removal and public layout polish: removed Vital Events from the app router, Vercel rewrites, admin sidebar, seed data, and fresh schema creation; deleted the route file; and added a local schema migration drop for existing `vital_events` tables. Verified `/vital-events` returns 404. Polished the public navigation with a distinct citizen-facing header and removed the redundant login staff chip from the login page. Re-ran the Impeccable detector on layout/styles/routes with no findings. Public household checker remains privacy-safe with flat results only and correction requests landing in the admin queue.
+
 Last updated: 2026-07-27

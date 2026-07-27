@@ -23,6 +23,7 @@ None
 | PUB001 | Phase 1 public infrastructure: layout, announcements, events, hearings/comments | 2026-07-27 |
 | PUB002 | Phase 2 public application/request flows with admin review queues | 2026-07-27 |
 | PUB003 | Phase 3 privacy-safe citizen and household record checkers | 2026-07-27 |
+| PUB004 | Remove Vital Events, verify public household checker, and polish public/admin layout | 2026-07-27 |
 
 ## Blocked
 | ID | Task | Reason |

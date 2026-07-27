@@ -13,6 +13,8 @@ if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is required.');
 
 const sql = neon(process.env.DATABASE_URL);
 
+await sql`DROP TABLE IF EXISTS vital_events`;
+
 await sql`
 CREATE TABLE IF NOT EXISTS public_scholarship_applications (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -91,4 +93,4 @@ CREATE TABLE IF NOT EXISTS household_check_requests (
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 )`;
 
-console.log('Public queue tables ready.');
+console.log('Public queue tables ready; Vital Events removed if it existed.');

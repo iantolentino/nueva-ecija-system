@@ -75,7 +75,6 @@ async function resetSeededData(sql) {
   await sql`DELETE FROM skills_profiles WHERE citizen_id IN (SELECT id FROM citizens WHERE contact_number LIKE 'QA-%')`;
   await sql`DELETE FROM job_matches WHERE citizen_id IN (SELECT id FROM citizens WHERE contact_number LIKE 'QA-%')`;
   await sql`DELETE FROM qr_passes WHERE citizen_id IN (SELECT id FROM citizens WHERE contact_number LIKE 'QA-%')`;
-  await sql`DELETE FROM vital_events WHERE citizen_id IN (SELECT id FROM citizens WHERE contact_number LIKE 'QA-%')`;
   await sql`DELETE FROM blood_donors WHERE citizen_id IN (SELECT id FROM citizens WHERE contact_number LIKE 'QA-%')`;
   await sql`DELETE FROM emergency_contacts WHERE citizen_id IN (SELECT id FROM citizens WHERE contact_number LIKE 'QA-%')`;
   await sql`DELETE FROM emergency_alerts WHERE citizen_id IN (SELECT id FROM citizens WHERE contact_number LIKE 'QA-%')`;
@@ -200,9 +199,6 @@ async function seedModuleData(sql, citizens, adminId) {
   }
   for (let i = 0; i < 24; i += 1) {
     await sql`INSERT INTO qr_passes (citizen_id, qr_code_data) VALUES (${picked(i)}::uuid, ${`QA-PASS-${picked(i)}`}) ON CONFLICT (citizen_id) DO UPDATE SET qr_code_data = EXCLUDED.qr_code_data, updated_at = now()`;
-  }
-  for (let i = 0; i < 18; i += 1) {
-    await sql`INSERT INTO vital_events (citizen_id, event_type, event_date, details, recorded_by_staff_id) VALUES (${picked(i)}::uuid, ${['Birth', 'Death', 'Address Change'][i % 3]}, ${`2026-0${(i % 8) + 1}-15`}, ${JSON.stringify({ note: `QA vital event ${i + 1}` })}::jsonb, ${adminId}::uuid)`;
   }
   for (let i = 0; i < 20; i += 1) {
     await sql`INSERT INTO emergency_contacts (citizen_id, next_of_kin_name, relationship, phone_number, address) VALUES (${picked(i)}::uuid, ${`QA Contact ${i + 1}`}, ${['Spouse', 'Parent', 'Sibling', 'Child'][i % 4]}, ${`QA-0917${String(3000000 + i).slice(0, 7)}`}, ${`QA emergency address ${i + 1}`}) ON CONFLICT (citizen_id) DO UPDATE SET next_of_kin_name = EXCLUDED.next_of_kin_name, relationship = EXCLUDED.relationship, phone_number = EXCLUDED.phone_number, address = EXCLUDED.address, updated_at = now()`;
