@@ -42,4 +42,6 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 action-button and public modal UX fix: Citizen Directory `View`/`Edit` and Scholarships `Review` now use shared `.btn.btn-small.btn-action` styling so staff actions look clickable. Public jobs and hearings now show one clear button per card and open an accessible modal form that posts to the existing endpoints; modal behavior is delegated in `public/app.js` and works after client-side page swaps.
 
+2026-07-27 public modal handler fix: `renderPublicLayout()` now includes `<script src="/app.js" defer></script>`, enabling the existing delegated `[data-modal-open]` click handler on public jobs and hearings. `replaceDocument()` now closes any open modal before swapping content.
+
 Last updated: 2026-07-27

@@ -41,6 +41,7 @@
     currentShell.innerHTML = nextShell.innerHTML;
     if (nextSidebar && currentSidebar) currentSidebar.innerHTML = nextSidebar.innerHTML;
     document.title = next.title || document.title;
+    closeAllModals();
     setActive(new URL(url, window.location.origin).pathname);
     window.scrollTo(0, 0);
   }
