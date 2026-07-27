@@ -26,6 +26,7 @@ None
 | PUB004 | Remove Vital Events, verify public household checker, and polish public/admin layout | 2026-07-27 |
 | UX003 | Make admin action links look clickable and add public jobs/hearings modal forms | 2026-07-27 |
 | B004 | Redirect authenticated login visits and clean login page header | 2026-07-27 |
+| UX004 | Apply LottieFiles-inspired visual redesign across public and admin UI | 2026-07-27 |
 
 ## Blocked
 | ID | Task | Reason |

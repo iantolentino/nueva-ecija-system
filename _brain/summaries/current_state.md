@@ -46,4 +46,6 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 login routing cleanup: `/login` now checks an existing session cookie and redirects authenticated staff to `/dashboard`; anonymous login GET avoids DB/session validation when no session cookie exists. The anonymous login page no longer renders the admin topbar/breadcrumb and its main heading is `Nueva Ecija Portal`.
 
+2026-07-27 LottieFiles-inspired UI pass: updated the shared CSS design system only, preserving routes/forms/backend behavior. Public and admin pages now share a brighter white canvas, mint/teal accent palette, Inter-style system font stack, pill navigation, rounded cards/buttons/inputs, softer shadows, gradient module/stat surfaces, refreshed sidebar, modal, table, and calendar styling. Impeccable detector returned no findings.
+
 Last updated: 2026-07-27
