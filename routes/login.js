@@ -2,6 +2,7 @@ import { serialize } from 'cookie';
 import { authenticateStaff, createSessionToken } from '../lib/auth.js';
 import { getDb } from '../lib/db.js';
 import { renderLayout } from '../lib/layout.js';
+import { requireAuth } from '../lib/middleware.js';
 
 function getFormBody(body) {
   if (typeof body === 'string') {
@@ -10,12 +11,16 @@ function getFormBody(body) {
   return body && typeof body === 'object' ? body : {};
 }
 
+function hasSessionCookie(req) {
+  return /(?:^|;\s*)session=/.test(req.headers.cookie || '');
+}
+
 function loginPage(alert) {
   return renderLayout({
     title: 'Login',
     alert,
     content: `<section class="container"><div class="card" style="max-width: 420px; margin: 2rem auto;">
-      <h1>Staff login</h1><p>Sign in to access the Population Engine.</p>
+      <h1>Nueva Ecija Portal</h1><p>Sign in to access the Population Engine.</p>
       <form method="post" action="/login">
         <div class="form-group"><label for="email">Email</label><input id="email" type="email" name="email" required autocomplete="email"></div>
         <div class="form-group"><label for="password">Password</label><input id="password" type="password" name="password" required autocomplete="current-password"></div>
@@ -27,6 +32,14 @@ function loginPage(alert) {
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
+    if (hasSessionCookie(req)) {
+      const sql = getDb();
+      const staff = await requireAuth(req, sql);
+      if (staff) {
+        res.writeHead(302, { Location: '/dashboard' }).end();
+        return;
+      }
+    }
     res.status(200).send(loginPage());
     return;
   }

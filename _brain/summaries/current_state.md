@@ -44,4 +44,6 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 public modal handler fix: `renderPublicLayout()` now includes `<script src="/app.js" defer></script>`, enabling the existing delegated `[data-modal-open]` click handler on public jobs and hearings. `replaceDocument()` now closes any open modal before swapping content.
 
+2026-07-27 login routing cleanup: `/login` now checks an existing session cookie and redirects authenticated staff to `/dashboard`; anonymous login GET avoids DB/session validation when no session cookie exists. The anonymous login page no longer renders the admin topbar/breadcrumb and its main heading is `Nueva Ecija Portal`.
+
 Last updated: 2026-07-27
