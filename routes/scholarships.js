@@ -46,7 +46,7 @@ export default async function handler(req, res) {
   ]);
   const scoped = staff.jurisdiction_level === 'Barangay' ? apps.filter(a => a.barangay_id === staff.jurisdiction_id) : apps;
   const cards = programs.map(p => `<article class="card"><h2>${escapeHtml(p.name)}</h2><p>${escapeHtml(p.description || '')}</p><a class="btn" href="/scholarships/apply?program=${p.id}">Staff-assisted apply</a></article>`).join('');
-  const rows = scoped.map(a => `<tr><td>${escapeHtml(`${a.last_name}, ${a.first_name}`)}</td><td>${escapeHtml(a.program_name)}</td><td>${escapeHtml(a.status)}</td><td><a href="/scholarships/${a.id}/review">Review</a></td></tr>`).join('');
+  const rows = scoped.map(a => `<tr><td>${escapeHtml(`${a.last_name}, ${a.first_name}`)}</td><td>${escapeHtml(a.program_name)}</td><td>${escapeHtml(a.status)}</td><td><a class="btn btn-small btn-action" href="/scholarships/${a.id}/review">Review</a></td></tr>`).join('');
   const queueRows = publicApps.map(app => `<tr><td>${escapeHtml(`${app.applicant_last_name}, ${app.applicant_first_name}`)}</td><td>${escapeHtml(app.program_name || '')}</td><td>${escapeHtml(app.barangay_name || '')}</td><td><span class="badge">${escapeHtml(app.status)}</span></td><td>
     <form method="post" class="inline-form"><input type="hidden" name="public_application_id" value="${escapeHtml(app.id)}"><input type="hidden" name="matched_citizen_id" value="${escapeHtml(app.matched_citizen_id || '')}"><select name="status">${PUBLIC_STATUSES.map(s => `<option ${s === app.status ? 'selected' : ''}>${s}</option>`).join('')}</select><input name="review_notes" placeholder="Review notes" value="${escapeHtml(app.review_notes || '')}"><button class="btn btn-small">Save</button></form>
   </td></tr>`).join('');

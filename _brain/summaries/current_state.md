@@ -40,4 +40,6 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 Vital Events removal and public layout polish: removed Vital Events from the app router, Vercel rewrites, admin sidebar, seed data, and fresh schema creation; deleted the route file; and added a local schema migration drop for existing `vital_events` tables. Verified `/vital-events` returns 404. Polished the public navigation with a distinct citizen-facing header and removed the redundant login staff chip from the login page. Re-ran the Impeccable detector on layout/styles/routes with no findings. Public household checker remains privacy-safe with flat results only and correction requests landing in the admin queue.
 
+2026-07-27 action-button and public modal UX fix: Citizen Directory `View`/`Edit` and Scholarships `Review` now use shared `.btn.btn-small.btn-action` styling so staff actions look clickable. Public jobs and hearings now show one clear button per card and open an accessible modal form that posts to the existing endpoints; modal behavior is delegated in `public/app.js` and works after client-side page swaps.
+
 Last updated: 2026-07-27

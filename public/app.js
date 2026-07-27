@@ -45,6 +45,24 @@
     window.scrollTo(0, 0);
   }
 
+  function openModal(modal) {
+    if (!modal) return;
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    var firstField = modal.querySelector('input:not([type="hidden"]), textarea, select, button');
+    if (firstField) firstField.focus();
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+  }
+
+  function closeAllModals() {
+    document.querySelectorAll('[data-modal]:not([hidden])').forEach(closeModal);
+  }
+
   async function visit(url, push) {
     var response = await fetch(url, { headers: { 'X-Requested-With': 'fetch' } });
     if (response.redirected || !response.ok) {
@@ -57,6 +75,27 @@
   }
 
   document.addEventListener('click', function (event) {
+    var openButton = event.target.closest('[data-modal-open]');
+    if (openButton) {
+      var modal = document.getElementById(openButton.getAttribute('data-modal-open'));
+      if (modal) {
+        event.preventDefault();
+        openModal(modal);
+      }
+      return;
+    }
+
+    if (event.target.closest('[data-modal-close]')) {
+      event.preventDefault();
+      closeModal(event.target.closest('[data-modal]'));
+      return;
+    }
+
+    if (event.target.matches('[data-modal]')) {
+      closeModal(event.target);
+      return;
+    }
+
     var link = event.target.closest('a[href]');
     if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     var url = new URL(link.href, window.location.origin);
@@ -68,6 +107,10 @@
 
   window.addEventListener('popstate', function () {
     visit(window.location.href, false).catch(function () { window.location.reload(); });
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeAllModals();
   });
 
   setActive(window.location.pathname);

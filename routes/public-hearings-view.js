@@ -30,21 +30,33 @@ export default async function handler(req, res) {
     ORDER BY scheduled_at ASC NULLS LAST, created_at DESC
     LIMIT 50
   `;
-  const list = hearings.map((hearing) => `<article class="public-list-item">
+  const list = hearings.map((hearing) => {
+    const modalId = `hearing-comment-${escapeHtml(hearing.id)}`;
+    return `<article class="public-list-item">
     <div>
       <h2>${escapeHtml(hearing.title)}</h2>
       <p>${escapeHtml(hearing.ordinance_draft_text)}</p>
       <p class="meta-line">${hearing.scheduled_at ? escapeHtml(String(hearing.scheduled_at).slice(0, 16)) : 'Schedule to be announced'} · ${escapeHtml(hearing.location || 'Location to be announced')}</p>
-      <form class="public-inline-form" method="post" action="/public/hearings">
-        <input type="hidden" name="public_hearing_id" value="${escapeHtml(hearing.id)}">
-        <div class="form-row">
-          <div class="form-group"><label for="name-${escapeHtml(hearing.id)}">Your name</label><input id="name-${escapeHtml(hearing.id)}" name="commenter_name" placeholder="Optional"></div>
-          <div class="form-group"><label for="comment-${escapeHtml(hearing.id)}">Public comment</label><textarea id="comment-${escapeHtml(hearing.id)}" name="comment" required rows="3"></textarea></div>
+      <button class="btn btn-small" type="button" data-modal-open="${modalId}">Submit comment for review</button>
+      <div class="modal-backdrop" id="${modalId}" data-modal hidden>
+        <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="${modalId}-title">
+          <div class="modal-header">
+            <div><p class="page-kicker">Public comment</p><h2 id="${modalId}-title">${escapeHtml(hearing.title)}</h2></div>
+            <button class="modal-close" type="button" data-modal-close aria-label="Close comment form">×</button>
+          </div>
+          <form class="public-modal-form" method="post" action="/public/hearings">
+            <input type="hidden" name="public_hearing_id" value="${escapeHtml(hearing.id)}">
+            <div class="form-row">
+              <div class="form-group"><label for="name-${escapeHtml(hearing.id)}">Your name</label><input id="name-${escapeHtml(hearing.id)}" name="commenter_name" placeholder="Optional"></div>
+              <div class="form-group"><label for="comment-${escapeHtml(hearing.id)}">Public comment</label><textarea id="comment-${escapeHtml(hearing.id)}" name="comment" required rows="4"></textarea></div>
+            </div>
+            <div class="form-actions"><button class="btn" type="submit">Submit comment for review</button><button class="btn btn-secondary" type="button" data-modal-close>Cancel</button></div>
+          </form>
         </div>
-        <button class="btn btn-small">Submit comment for review</button>
-      </form>
+      </div>
     </div>
-  </article>`).join('');
+  </article>`;
+  }).join('');
   const alert = req.query?.submitted ? { type: 'success', message: 'Your comment was received and is pending staff review.' } : null;
   const content = `<section class="container public-page">
     <p class="page-kicker">Public Participation</p>
