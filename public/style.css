@@ -62,3 +62,5 @@ tr:hover { background: var(--muted); }
 .stat-card .label { color: var(--muted-foreground); font-size: 0.875rem; }
 footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--muted-foreground); font-size: 0.875rem; background: var(--muted); margin-top: 4rem; }
 @media (max-width: 640px) { .container { padding: 1rem; } h1 { font-size: 1.5rem; } nav { flex-direction: column; } .form-row { grid-template-columns: 1fr; } table { font-size: 0.875rem; } }
+
+@media print { nav, footer, .btn { display: none; } }

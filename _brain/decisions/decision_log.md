@@ -21,3 +21,8 @@ Date: 2026-07-27
 Impact: high
 Reason: Vercel Hobby allows only 12 functions, so public routes must dispatch through one `/api/router.js` function.
 Date: 2026-07-27
+
+[MVP] -> Implement remaining modules as simple server-rendered operational pages
+Impact: high
+Reason: Dashboard module links must open usable pages instead of 404s while preserving the existing schema and free-tier deployment shape.
+Date: 2026-07-27

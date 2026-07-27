@@ -1,0 +1,12 @@
+import { getDb } from '../lib/db.js';
+import { body, field, getCitizenOptions, page, requireStaffPage, select, simpleAudit } from '../lib/module-utils.js';
+import { escapeHtml } from '../lib/layout.js';
+export default async function handler(req, res) {
+  const sql = getDb(); const staff = await requireStaffPage(req, res, sql); if (!staff) return;
+  if (req.method === 'POST') { const d = body(req); await sql`INSERT INTO emergency_contacts (citizen_id, next_of_kin_name, relationship, phone_number, address) VALUES (${d.citizen_id}::uuid, ${String(d.next_of_kin_name || '')}, ${String(d.relationship || '')}, ${String(d.phone_number || '')}, ${String(d.address || '')}) ON CONFLICT (citizen_id) DO UPDATE SET next_of_kin_name = EXCLUDED.next_of_kin_name, relationship = EXCLUDED.relationship, phone_number = EXCLUDED.phone_number, address = EXCLUDED.address, updated_at = now()`; await simpleAudit(sql, staff, 'upsert', 'emergency-contacts', {}, d.citizen_id); return res.writeHead(302, { Location: '/emergency-contacts' }).end(); }
+  if (req.method !== 'GET') { res.setHeader('Allow','GET, POST'); return res.status(405).send('Method not allowed'); }
+  const search = String(req.query?.search || '');
+  const [citizens, contacts] = await Promise.all([getCitizenOptions(sql, staff, search), sql`SELECT emergency_contacts.*, citizens.first_name, citizens.last_name FROM emergency_contacts JOIN citizens ON citizens.id = emergency_contacts.citizen_id ORDER BY updated_at DESC LIMIT 100`]);
+  const rows = contacts.map(c => `<tr><td>${escapeHtml(`${c.last_name}, ${c.first_name}`)}</td><td>${escapeHtml(c.next_of_kin_name)}</td><td>${escapeHtml(c.relationship || '')}</td><td>${escapeHtml(c.phone_number)}</td></tr>`).join('');
+  res.status(200).send(page({ title: 'Emergency Contacts', staff, content: `<form class="card" method="get">${field('search','Find citizen','search',`value="${escapeHtml(search)}"`)}<button class="btn">Search</button></form><form class="card" method="post">${select('citizen_id','Citizen',citizens.map(c=>({value:c.id,label:`${c.last_name}, ${c.first_name}`})))}${field('next_of_kin_name','Next of kin','text','required')}${field('relationship','Relationship')}${field('phone_number','Phone number','tel','required')}${field('address','Address')}<button class="btn">Save contact</button></form><table><thead><tr><th>Citizen</th><th>Next of kin</th><th>Relationship</th><th>Phone</th></tr></thead><tbody>${rows || '<tr><td colspan="4">No emergency contacts yet.</td></tr>'}</tbody></table>` }));
+}
