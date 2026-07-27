@@ -1,15 +1,6 @@
 import { getDb } from '../lib/db.js';
-import { escapeHtml, renderLayout } from '../lib/layout.js';
+import { escapeHtml, moduleGroups, renderLayout } from '../lib/layout.js';
 import { requireAuth } from '../lib/middleware.js';
-
-const modules = [
-  ['Citizen Directory', '/directory'], ['Announcements', '/announcements'], ['Scholarships', '/scholarships'],
-  ['MTOP Permits', '/mtop'], ['QR Passes', '/directory'], ['Vital Events', '/vital-events'],
-  ['Blood Donors', '/blood-donors'], ['Public Hearings', '/public-hearings'], ['Emergency Contacts', '/emergency-contacts'],
-  ['Clearances', '/clearances'], ['Relief Distribution', '/relief-distribution'], ['Events Calendar', '/events'],
-  ['Reports', '/reports'], ['Skills Profiles', '/skills-profiles'], ['Job Opportunities', '/job-opportunities'],
-  ['Job Matches', '/job-matches'], ['Households', '/directory'], ['Staff Administration', '/dashboard'],
-];
 
 function redirectToLogin(res) {
   res.writeHead(302, { Location: '/login' }).end();
@@ -41,17 +32,23 @@ export default async function handler(req, res) {
     `,
   ]);
 
-  const moduleLinks = modules.map(([label, href]) => `<a class="card" href="${href}"><h3>${escapeHtml(label)}</h3><p>Open module</p></a>`).join('');
+  const moduleLinks = moduleGroups.map((group) => `<section class="module-section">
+    <div class="section-heading"><span class="group-dot ${group.tone}"></span><h2>${escapeHtml(group.name)}</h2></div>
+    <div class="module-grid">${group.modules.map((module) => `<a class="module-card tone-${group.tone}" href="${module.href}">
+      <span class="module-icon">${escapeHtml(module.icon)}</span>
+      <span><strong>${escapeHtml(module.label)}</strong><small>Open module</small></span>
+    </a>`).join('')}</div>
+  </section>`).join('');
   res.status(200).send(renderLayout({
     title: 'Dashboard',
     isLoggedIn: true,
     staffName: staff.name,
     staffRole: staff.role,
-    content: `<section class="container"><h1>Dashboard</h1><p>Overview for ${escapeHtml(staff.jurisdiction_level)} staff.</p>
+    content: `<section class="container dashboard-page"><p class="page-kicker">Overview for ${escapeHtml(staff.jurisdiction_level)} staff</p>
       <div class="dashboard-grid">
-        <div class="stat-card"><div class="label">Citizens</div><div class="number">${citizenCount.total}</div></div>
-        <div class="stat-card"><div class="label">Announcements</div><div class="number">${announcementCount.total}</div></div>
-        <div class="stat-card"><div class="label">Scholarship applications</div><div class="number">${applicationCount.total}</div></div>
-      </div><h2>Modules</h2><div class="grid">${moduleLinks}</div></section>`,
+        <div class="stat-card stat-records"><span class="stat-icon">ID</span><div class="label">Citizens</div><div class="number">${citizenCount.total}</div><p>Directory records available</p></div>
+        <div class="stat-card stat-services"><span class="stat-icon">AN</span><div class="label">Announcements</div><div class="number">${announcementCount.total}</div><p>Posts visible to staff</p></div>
+        <div class="stat-card stat-admin"><span class="stat-icon">SC</span><div class="label">Scholarship Applications</div><div class="number">${applicationCount.total}</div><p>Applications for review</p></div>
+      </div><div class="section-heading"><h2>All Modules</h2><p>Choose a service area below or use the sidebar anytime.</p></div>${moduleLinks}</section>`,
   }));
 }

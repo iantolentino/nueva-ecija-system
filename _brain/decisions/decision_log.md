@@ -26,3 +26,8 @@ Date: 2026-07-27
 Impact: high
 Reason: Dashboard module links must open usable pages instead of 404s while preserving the existing schema and free-tier deployment shape.
 Date: 2026-07-27
+
+[UX] -> Use a persistent grouped sidebar instead of top navigation
+Impact: high
+Reason: Government staff need stable access to all modules from every page, not only a dashboard card grid.
+Date: 2026-07-27

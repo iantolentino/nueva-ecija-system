@@ -1,7 +1,7 @@
 # PROGRESS
 
 ## Active Task
-Part 5 missing module pages
+Dashboard UI and sidebar navigation redesign
 
 ## In Progress
 | ID | Task | Blocker |
@@ -17,6 +17,7 @@ Part 5 missing module pages
 | B001 | Enable full local preview after login | 2026-07-27 |
 | B002 | Make Vercel deploy work on Hobby free tier | 2026-07-27 |
 | T005 | Build Part 5 remaining modules and reports | 2026-07-27 |
+| UX001 | Add persistent sidebar and modern dashboard cards | 2026-07-27 |
 
 ## Blocked
 | ID | Task | Reason |

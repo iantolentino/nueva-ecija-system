@@ -26,4 +26,6 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 Part 5 module pages: added MTOP, QR pass, vital events, blood donors, public hearings, emergency contacts, clearances, relief distribution, events, reports, skills profiles, job opportunities, and job matches. Live deploy succeeded at production alias `https://nueva-ecija-portal.vercel.app`.
 
+2026-07-27 UI pass: replaced top navigation with persistent grouped sidebar for all 18 modules, added mobile sidebar toggle, active highlighting, shared module metadata, denser dashboard module groups, and refreshed card/stat styling. Live deploy succeeded at production alias `https://nueva-ecija-portal.vercel.app`.
+
 Last updated: 2026-07-27
