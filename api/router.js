@@ -17,6 +17,9 @@ import login from '../routes/login.js';
 import logout from '../routes/logout.js';
 import mtop from '../routes/mtop.js';
 import publicHearings from '../routes/public-hearings.js';
+import publicAnnouncements from '../routes/public-announcements.js';
+import publicEvents from '../routes/public-events.js';
+import publicHearingsView from '../routes/public-hearings-view.js';
 import qrPass from '../routes/qr-pass/[citizenId].js';
 import qrPasses from '../routes/qr-passes.js';
 import reliefDistribution from '../routes/relief-distribution.js';
@@ -31,6 +34,9 @@ import vitalEvents from '../routes/vital-events.js';
 const routes = [
   { pattern: /^\/$/, handler: index },
   { pattern: /^\/api\/?$/, handler: index },
+  { pattern: /^\/public\/announcements\/?$/, handler: publicAnnouncements },
+  { pattern: /^\/public\/events\/?$/, handler: publicEvents },
+  { pattern: /^\/public\/hearings\/?$/, handler: publicHearingsView },
   { pattern: /^\/login\/?$/, handler: login },
   { pattern: /^\/api\/login\/?$/, handler: login },
   { pattern: /^\/logout\/?$/, handler: logout },

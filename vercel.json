@@ -2,6 +2,9 @@
   "framework": null,
   "rewrites": [
     { "source": "/", "destination": "/api/router" },
+    { "source": "/public/announcements", "destination": "/api/router" },
+    { "source": "/public/events", "destination": "/api/router" },
+    { "source": "/public/hearings", "destination": "/api/router" },
     { "source": "/login", "destination": "/api/router" },
     { "source": "/logout", "destination": "/api/router" },
     { "source": "/dashboard", "destination": "/api/router" },

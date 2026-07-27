@@ -20,6 +20,7 @@ None
 | UX001 | Add persistent sidebar and modern dashboard cards | 2026-07-27 |
 | UX002 | Fix sidebar SPA navigation, add Staff Administration, functional Events Calendar, and QA seed data | 2026-07-27 |
 | B003 | Fix duplicate sidebar active highlights and seed every module tab | 2026-07-27 |
+| PUB001 | Phase 1 public infrastructure: layout, announcements, events, hearings/comments | 2026-07-27 |
 
 ## Blocked
 | ID | Task | Reason |
