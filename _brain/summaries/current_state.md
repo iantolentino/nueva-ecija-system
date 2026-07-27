@@ -48,4 +48,6 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 LottieFiles-inspired UI pass: updated the shared CSS design system only, preserving routes/forms/backend behavior. Public and admin pages now share a brighter white canvas, mint/teal accent palette, Inter-style system font stack, pill navigation, rounded cards/buttons/inputs, softer shadows, gradient module/stat surfaces, refreshed sidebar, modal, table, and calendar styling. Impeccable detector returned no findings.
 
+2026-07-27 UI/UX Pro Max minimalism pass: installed and used `ui-ux-pro-max`, generated a minimalist government/public-services design-system recommendation, and converted the shared CSS away from the prior decorative mint/purple Lottie-inspired treatment. Current UI tokens use high-contrast navy/blue, white/slate surfaces, restrained borders, fewer shadows, no decorative gradients/blobs, reduced motion support, and consistent minimal components across public and admin pages. Functionality/routes/forms were not changed.
+
 Last updated: 2026-07-27

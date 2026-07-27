@@ -27,6 +27,7 @@ None
 | UX003 | Make admin action links look clickable and add public jobs/hearings modal forms | 2026-07-27 |
 | B004 | Redirect authenticated login visits and clean login page header | 2026-07-27 |
 | UX004 | Apply LottieFiles-inspired visual redesign across public and admin UI | 2026-07-27 |
+| UX005 | Apply UI/UX Pro Max skill minimalism pass to public and admin UI | 2026-07-27 |
 
 ## Blocked
 | ID | Task | Reason |
