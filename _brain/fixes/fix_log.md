@@ -25,6 +25,9 @@ Status: `FIXED` | `WORKAROUND` (not a real fix, revisit) | `SUPERSEDED` (see lin
 |----|-------|----------|----------------------|-------------|------|--------|
 | F001 | Local preview crashes after login | INFRA | Local environment lacked `DATABASE_URL`, so DB-backed Vercel functions crashed instead of serving the app. | inline | 2026-07-27 | WORKAROUND |
 | F002 | Vercel Hobby deploy exceeded function limit | DEPLOY | Each file under `/api` became a separate Vercel function, exceeding Hobby's 12-function deployment cap. | inline | 2026-07-27 | FIXED |
+| F003 | Sidebar modules reloaded and Staff Administration had no route | WEB | Sidebar links were plain full-document navigations and Staff Administration pointed to a route with no implemented page. | inline | 2026-07-27 | FIXED |
+| F004 | Multiple sidebar items highlighted at once | WEB | Citizen Directory, Households, and QR Passes reused `/directory`, so href-based active matching selected all three siblings. | inline | 2026-07-27 | FIXED |
+| F005 | Sidebar active logic could still select repeated module keys | WEB | Active classes were toggled per link; clearing all active classes then applying only the first exact module-key match makes multiple highlights impossible. | inline | 2026-07-27 | FIXED |
 
 ---
 

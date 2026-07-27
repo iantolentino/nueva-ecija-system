@@ -9,6 +9,7 @@ import directory from '../routes/directory.js';
 import directoryImport from '../routes/directory/import.js';
 import emergencyContacts from '../routes/emergency-contacts.js';
 import events from '../routes/events.js';
+import households from '../routes/households.js';
 import index from '../routes/index.js';
 import jobMatches from '../routes/job-matches.js';
 import jobOpportunities from '../routes/job-opportunities.js';
@@ -17,12 +18,14 @@ import logout from '../routes/logout.js';
 import mtop from '../routes/mtop.js';
 import publicHearings from '../routes/public-hearings.js';
 import qrPass from '../routes/qr-pass/[citizenId].js';
+import qrPasses from '../routes/qr-passes.js';
 import reliefDistribution from '../routes/relief-distribution.js';
 import reports from '../routes/reports.js';
 import scholarships from '../routes/scholarships.js';
 import scholarshipApply from '../routes/scholarships/apply.js';
 import scholarshipReview from '../routes/scholarships/[id]/review.js';
 import skillsProfiles from '../routes/skills-profiles.js';
+import staffAdmin from '../routes/staff-admin.js';
 import vitalEvents from '../routes/vital-events.js';
 
 const routes = [
@@ -34,6 +37,7 @@ const routes = [
   { pattern: /^\/api\/logout\/?$/, handler: logout },
   { pattern: /^\/dashboard\/?$/, handler: dashboard },
   { pattern: /^\/directory\/?$/, handler: directory },
+  { pattern: /^\/households\/?$/, handler: households },
   { pattern: /^\/directory\/import\/?$/, handler: directoryImport },
   { pattern: /^\/citizen\/new\/?$/, handler: citizenNew },
   { pattern: /^\/citizen\/([^/]+)\/edit\/?$/, handler: citizenEdit, params: ['id'] },
@@ -41,6 +45,7 @@ const routes = [
   { pattern: /^\/announcements\/?$/, handler: announcements },
   { pattern: /^\/mtop\/?$/, handler: mtop },
   { pattern: /^\/qr-pass\/([^/]+)\/?$/, handler: qrPass, params: ['citizenId'] },
+  { pattern: /^\/qr-passes\/?$/, handler: qrPasses },
   { pattern: /^\/vital-events\/?$/, handler: vitalEvents },
   { pattern: /^\/blood-donors\/?$/, handler: bloodDonors },
   { pattern: /^\/public-hearings\/?$/, handler: publicHearings },
@@ -52,6 +57,7 @@ const routes = [
   { pattern: /^\/skills-profiles\/?$/, handler: skillsProfiles },
   { pattern: /^\/job-opportunities\/?$/, handler: jobOpportunities },
   { pattern: /^\/job-matches\/?$/, handler: jobMatches },
+  { pattern: /^\/staff-admin\/?$/, handler: staffAdmin },
   { pattern: /^\/scholarships\/?$/, handler: scholarships },
   { pattern: /^\/scholarships\/apply\/?$/, handler: scholarshipApply },
   { pattern: /^\/scholarships\/([^/]+)\/review\/?$/, handler: scholarshipReview, params: ['id'] },

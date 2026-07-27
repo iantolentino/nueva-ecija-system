@@ -1,7 +1,7 @@
 # PROGRESS
 
 ## Active Task
-Dashboard UI and sidebar navigation redesign
+None
 
 ## In Progress
 | ID | Task | Blocker |
@@ -18,6 +18,8 @@ Dashboard UI and sidebar navigation redesign
 | B002 | Make Vercel deploy work on Hobby free tier | 2026-07-27 |
 | T005 | Build Part 5 remaining modules and reports | 2026-07-27 |
 | UX001 | Add persistent sidebar and modern dashboard cards | 2026-07-27 |
+| UX002 | Fix sidebar SPA navigation, add Staff Administration, functional Events Calendar, and QA seed data | 2026-07-27 |
+| B003 | Fix duplicate sidebar active highlights and seed every module tab | 2026-07-27 |
 
 ## Blocked
 | ID | Task | Reason |

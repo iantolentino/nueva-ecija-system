@@ -28,4 +28,10 @@ T004 citizen CRUD/import, announcements, and scholarship routes pass local synta
 
 2026-07-27 UI pass: replaced top navigation with persistent grouped sidebar for all 18 modules, added mobile sidebar toggle, active highlighting, shared module metadata, denser dashboard module groups, and refreshed card/stat styling. Live deploy succeeded at production alias `https://nueva-ecija-portal.vercel.app`.
 
+2026-07-27 sidebar/staff/events QA pass: added client-side internal link navigation via `public/app.js`, fixed active sidebar highlighting, built protected Staff Administration at `/staff-admin`, replaced the Events module with a month calendar/detail view, installed Impeccable artifacts under `.github/`, refined the color/spacing system, added `scripts/seed-demo-data.js`, and seeded 80 QA citizens plus sample events into the configured Neon database.
+
+2026-07-27 duplicate sidebar highlight fix: replaced href-only active matching with stable module keys, added unique `/households` and `/qr-passes` list routes, and updated the seed script to reset/reseed data for every sidebar module. Local DB now has 60 QA citizens, 20 households, 109 sector tags, and sample rows for vital events, emergency contacts, announcements, scholarships, clearances, MTOP, QR passes, hearings, events, relief, blood donors, skills, jobs, matches, and staff admin.
+
+2026-07-27 stricter sidebar active fix: removed broad client/server active toggling, changed nested route checks to exact route-segment regex, and made the client clear all `.active` classes before applying only the first exact `data-nav-key` match. Verified five-path client sequence: `/directory`, `/households`, `/qr-passes`, `/events`, `/staff-admin` each produced exactly one active item.
+
 Last updated: 2026-07-27
