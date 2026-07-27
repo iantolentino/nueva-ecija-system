@@ -1,18 +1,19 @@
 {
   "framework": null,
   "rewrites": [
-    { "source": "/", "destination": "/api/index" },
-    { "source": "/login", "destination": "/api/login" },
-    { "source": "/logout", "destination": "/api/logout" },
-    { "source": "/dashboard", "destination": "/api/dashboard" },
-    { "source": "/directory", "destination": "/api/directory" },
-    { "source": "/citizen/new", "destination": "/api/citizen/new" },
-    { "source": "/citizen/:id/edit", "destination": "/api/citizen/:id/edit" },
-    { "source": "/citizen/:id", "destination": "/api/citizen/:id" },
-    { "source": "/directory/import", "destination": "/api/directory/import" },
-    { "source": "/announcements", "destination": "/api/announcements" },
-    { "source": "/scholarships", "destination": "/api/scholarships" },
-    { "source": "/scholarships/apply", "destination": "/api/scholarships/apply" },
-    { "source": "/scholarships/:id/review", "destination": "/api/scholarships/:id/review" }
+    { "source": "/", "destination": "/api/router" },
+    { "source": "/login", "destination": "/api/router" },
+    { "source": "/logout", "destination": "/api/router" },
+    { "source": "/dashboard", "destination": "/api/router" },
+    { "source": "/directory", "destination": "/api/router" },
+    { "source": "/directory/import", "destination": "/api/router" },
+    { "source": "/citizen/new", "destination": "/api/router" },
+    { "source": "/citizen/:id/edit", "destination": "/api/router" },
+    { "source": "/citizen/:id", "destination": "/api/router" },
+    { "source": "/announcements", "destination": "/api/router" },
+    { "source": "/scholarships", "destination": "/api/router" },
+    { "source": "/scholarships/apply", "destination": "/api/router" },
+    { "source": "/scholarships/:id/review", "destination": "/api/router" },
+    { "source": "/api/:path*", "destination": "/api/router" }
   ]
 }

@@ -15,11 +15,13 @@ T005 — Build Part 5 remaining modules, reports, local preview, and final deplo
 Depends on: T004
 
 ## Active Blockers
-Local preview cannot start DB-backed pages until `.env.local` contains `DATABASE_URL`. Vercel development env pull produced `.env.local`, but it only contained `VERCEL_OIDC_TOKEN` at verification time.
+None
 
 ## Session Notes
 T004 citizen CRUD/import, announcements, and scholarship routes pass local syntax/import, CSV parser, and Vercel route-config checks. Full database flow remains deferred until final local preview after Neon configuration.
 
 2026-07-27 local preview fix: added a root Vercel route, restored `npm run dev` as the local Vercel command, and added `npm run check:local` to fail fast when `DATABASE_URL` is missing. No database schema or production environment settings were changed.
+
+2026-07-27 free-tier deployment fix: moved route handlers out of `/api` into `/routes` and added one `/api/router.js` dispatcher. Vercel Hobby deployment succeeded and production alias is `https://nueva-ecija-portal.vercel.app`.
 
 Last updated: 2026-07-27

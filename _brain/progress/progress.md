@@ -1,12 +1,11 @@
 # PROGRESS
 
 ## Active Task
-Local preview enablement
+Free-tier Vercel deployment compatibility
 
 ## In Progress
 | ID | Task | Blocker |
 |---|---|---|
-| B001 | Enable full local preview after login | `.env.local` still needs a real `DATABASE_URL` value; Vercel development env pull only provided `VERCEL_OIDC_TOKEN`. |
 
 ## Completed
 | ID | Task | Date Completed |
@@ -15,10 +14,12 @@ Local preview enablement
 | T002 | Build Part 2 layout and data access | 2026-07-25 |
 | T003 | Build Part 3 auth, dashboard, and directory | 2026-07-25 |
 | T004 | Build Part 4 citizen workflows, announcements, and scholarships | 2026-07-25 |
+| B001 | Enable full local preview after login | 2026-07-27 |
+| B002 | Make Vercel deploy work on Hobby free tier | 2026-07-27 |
 
 ## Blocked
 | ID | Task | Reason |
 |---|---|---|
 
-Last updated: 2026-07-25
+Last updated: 2026-07-27
 Current phase: MVP

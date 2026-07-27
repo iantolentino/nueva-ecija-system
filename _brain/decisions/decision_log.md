@@ -16,3 +16,8 @@ Date: 2026-07-25
 Impact: medium
 Reason: Missing `DATABASE_URL` should stop local preview with a clear message instead of a serverless function crash.
 Date: 2026-07-27
+
+[DEPLOY] -> Use one Vercel function router for Hobby free-tier compatibility
+Impact: high
+Reason: Vercel Hobby allows only 12 functions, so public routes must dispatch through one `/api/router.js` function.
+Date: 2026-07-27
