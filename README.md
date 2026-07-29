@@ -4,7 +4,6 @@ Prepared from:
 
 - Repository: https://github.com/iantolentino/nueva-ecija-system.git
 - Live site checked: https://nueva-ecija-portal.vercel.app/
-- Local clone path: `C:\xampp\htdocs\strata-landing-page\scratchpad\nueva-ecija-system`
 - Date prepared: 2026-07-30
 
 ## Important Verification Note
